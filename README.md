@@ -1,1 +1,1 @@
-### Restaurant Reservayion Database ###
+### Restaurant Reservation Database ###
