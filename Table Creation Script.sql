@@ -79,7 +79,7 @@ CREATE TABLE `restaurant_reservation`.`orders` (
 	TableID		INT NOT NULL,
 	TotalPrice	DECIMAL(5, 2) NOT NULL,
 	Restaurant	INT NOT NULL,
-	PRIMARY KEY(OrderID),
+	PRIMARY KEY(TotalPrice),
 	FOREIGN KEY(TableID) REFERENCES restaurant_tables(TableNumber),
 	FOREIGN KEY(Restaurant) REFERENCES restaurants(RestaurantID)
 );
