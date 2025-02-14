@@ -20,6 +20,18 @@ VALUES(1, "John", "Smith", "JohnSmith@gmail.com", "6475340987"),
 (19, "Cameron", "Carson", "CamCarson@outlook.com", "4168760036"),
 (20, "Jayden", "Daniels", "JaydenDainels@gmail.com", "6477776654");
 
+INSERT INTO restaurant_reservation.promotions(PromotionID, Title, Promo_Description, Start_Date, End_Date, Discount_Amount, Is_Active)
+VALUES
+(0, "No Promo", "No Promo", "0", "0", 0.0, FALSE),
+(1, "Summer Feast Deal", "20% off all dinner entrees", "20240601", "20240831", 0.20, TRUE),  
+(2, "Weekend Breakfast Special", "Free coffee with any breakfast meal", "20240501", "20241231", 5.00, TRUE),  
+(3, "Happy Hour", "15% off all drinks from 4-7 PM", "20240115", "20241215", 0.15, TRUE),  
+(4, "Valentine's Day Special", "All entrees 25% off", "20240210", "20240215", 0.25, FALSE),  
+(5, "Free Birthday Dessert", "Free dessert for birthday guests", "20240101", "20241231", 1.00, TRUE),  
+(6, "Family Night Discount", "25% off for families", "20240615", "20240915", 0.25, TRUE),  
+(7, "Student Discount", "10% off with valid student ID", "20240101", "20241231", 0.10, TRUE),  
+(8, "Thanksgiving Discount", "30% off all menu items", "20241120", "20241128", 0.30, FALSE);  
+
 INSERT INTO restaurant_reservation.menuitem(ItemID, ItemName, Item_Description, Category, Price, Avaliable, promotions)
 VALUES
 (4001, 'Chocolate Lava Cake', 'Warm chocolate cake with molten center', 'Dessert', 8.99, TRUE, 5),  
@@ -32,37 +44,37 @@ VALUES
 (4009, 'Panna Cotta', 'Vanilla panna cotta with berry compote', 'Dessert', 7.79, TRUE, 5),  
 (4010, 'Chocolate Cake', 'White chocolate lava cake', 'Dessert', 9.49, TRUE, 5),  
 
-(4011, 'Grilled Ribeye Steak', '12oz ribeye with garlic butter', 'Main', 29.99, TRUE, NULL),  
-(4012, 'BBQ Ribs', 'Slow-cooked ribs with smoky BBQ sauce', 'Main', 24.99, TRUE, NULL),  
-(4013, 'Salmon Fillet', 'Grilled salmon with lemon butter', 'Main', 21.99, TRUE, NULL),  
-(4014, 'Chicken Parmesan', 'Crispy chicken with marinara and cheese', 'Main', 18.99, TRUE, NULL),  
-(4015, 'Vegan Stir-Fry', 'Tofu and vegetables in teriyaki sauce', 'Main', 15.99, TRUE, NULL),  
-(4016, 'Lobster Tail', 'Butter-poached lobster tail', 'Main', 34.99, TRUE, NULL),  
-(4017, 'Shrimp Scampi', 'Garlic shrimp with linguine pasta', 'Main', 22.49, TRUE, NULL),  
-(4018, 'Mushroom Risotto', 'Creamy risotto with wild mushrooms', 'Main', 17.99, TRUE, NULL),  
-(4019, 'Filet Mignon', '8oz filet with red wine reduction', 'Main', 32.99, TRUE, NULL),  
-(4020, 'Beef Wellington', 'Tenderloin wrapped in puff pastry', 'Main', 36.99, TRUE, NULL),  
-(4021, 'Pesto Pasta', 'Penne with creamy pesto sauce', 'Main', 14.99, TRUE, NULL),  
-(4022, 'Fish & Chips', 'Crispy battered cod with fries', 'Main', 16.99, TRUE, NULL),  
-(4023, 'Korean BBQ Bowl', 'Beef bulgogi with rice and kimchi', 'Main', 18.49, TRUE, NULL),  
-(4024, 'Stuffed Bell Peppers', 'Quinoa and vegetable-stuffed peppers', 'Main', 13.99, TRUE, NULL),  
-(4025, 'Margherita Pizza', 'Fresh basil, tomato, and mozzarella', 'Main', 12.99, TRUE, NULL),  
-(4026, 'Pulled Pork Sandwich', 'BBQ pulled pork on brioche', 'Main', 11.99, TRUE, NULL),  
-(4027, 'Bison Burger', 'Juicy bison patty with cheddar', 'Main', 14.49, TRUE, NULL),  
-(4028, 'Eggplant Parmesan', 'Baked eggplant with marinara', 'Main', 16.49, TRUE, NULL),  
-(4029, 'Chicken Alfredo', 'Fettuccine with creamy Alfredo sauce', 'Main', 17.99, TRUE, NULL),  
-(4030, 'Seared Duck Breast', 'Duck breast with cherry glaze', 'Main', 28.99, TRUE, NULL),  
+(4011, 'Grilled Ribeye Steak', '12oz ribeye with garlic butter', 'Main', 29.99, TRUE, 0),  
+(4012, 'BBQ Ribs', 'Slow-cooked ribs with smoky BBQ sauce', 'Main', 24.99, TRUE, 0),  
+(4013, 'Salmon Fillet', 'Grilled salmon with lemon butter', 'Main', 21.99, TRUE, 0),  
+(4014, 'Chicken Parmesan', 'Crispy chicken with marinara and cheese', 'Main', 18.99, TRUE, 0),  
+(4015, 'Vegan Stir-Fry', 'Tofu and vegetables in teriyaki sauce', 'Main', 15.99, TRUE, 0),  
+(4016, 'Lobster Tail', 'Butter-poached lobster tail', 'Main', 34.99, TRUE, 0),  
+(4017, 'Shrimp Scampi', 'Garlic shrimp with linguine pasta', 'Main', 22.49, TRUE, 0),  
+(4018, 'Mushroom Risotto', 'Creamy risotto with wild mushrooms', 'Main', 17.99, TRUE, 0),  
+(4019, 'Filet Mignon', '8oz filet with red wine reduction', 'Main', 32.99, TRUE, 0),  
+(4020, 'Beef Wellington', 'Tenderloin wrapped in puff pastry', 'Main', 36.99, TRUE, 0),  
+(4021, 'Pesto Pasta', 'Penne with creamy pesto sauce', 'Main', 14.99, TRUE, 0),  
+(4022, 'Fish & Chips', 'Crispy battered cod with fries', 'Main', 16.99, TRUE, 0),  
+(4023, 'Korean BBQ Bowl', 'Beef bulgogi with rice and kimchi', 'Main', 18.49, TRUE, 0),  
+(4024, 'Stuffed Bell Peppers', 'Quinoa and vegetable-stuffed peppers', 'Main', 13.99, TRUE, 0),  
+(4025, 'Margherita Pizza', 'Fresh basil, tomato, and mozzarella', 'Main', 12.99, TRUE, 0),  
+(4026, 'Pulled Pork Sandwich', 'BBQ pulled pork on brioche', 'Main', 11.99, TRUE, 0),  
+(4027, 'Bison Burger', 'Juicy bison patty with cheddar', 'Main', 14.49, TRUE, 0),  
+(4028, 'Eggplant Parmesan', 'Baked eggplant with marinara', 'Main', 16.49, TRUE, 0),  
+(4029, 'Chicken Alfredo', 'Fettuccine with creamy Alfredo sauce', 'Main', 17.99, TRUE, 0),  
+(4030, 'Seared Duck Breast', 'Duck breast with cherry glaze', 'Main', 28.99, TRUE, 0),  
 
-(4031, 'Bruschetta', 'Grilled bread with tomato and basil', 'Appetizer', 6.99, TRUE, NULL),  
-(4032, 'Calamari', 'Crispy calamari with marinara', 'Appetizer', 9.99, TRUE, NULL),  
-(4033, 'Stuffed Mushrooms', 'Mushrooms filled with cheese', 'Appetizer', 7.49, TRUE, NULL),  
-(4034, 'Buffalo Wings', 'Spicy wings with ranch dip', 'Appetizer', 10.99, TRUE, NULL),  
-(4035, 'Spinach Artichoke Dip', 'Creamy dip with tortilla chips', 'Appetizer', 8.99, TRUE, NULL),  
-(4036, 'Caprese Salad', 'Tomato, mozzarella, and balsamic', 'Appetizer', 7.99, TRUE, NULL),  
-(4037, 'Garlic Bread', 'Toasted garlic bread with butter', 'Appetizer', 5.49, TRUE, NULL),  
-(4038, 'Crab Cakes', 'Two lump crab cakes with aioli', 'Appetizer', 12.49, TRUE, NULL),  
-(4039, 'Nachos Supreme', 'Loaded nachos with cheese and jalapeños', 'Appetizer', 11.99, TRUE, NULL),  
-(4040, 'French Onion Soup', 'Caramelized onions in broth', 'Appetizer', 6.99, TRUE, NULL),  
+(4031, 'Bruschetta', 'Grilled bread with tomato and basil', 'Appetizer', 6.99, TRUE, 0),  
+(4032, 'Calamari', 'Crispy calamari with marinara', 'Appetizer', 9.99, TRUE, 0),  
+(4033, 'Stuffed Mushrooms', 'Mushrooms filled with cheese', 'Appetizer', 7.49, TRUE, 0),  
+(4034, 'Buffalo Wings', 'Spicy wings with ranch dip', 'Appetizer', 10.99, TRUE, 0),  
+(4035, 'Spinach Artichoke Dip', 'Creamy dip with tortilla chips', 'Appetizer', 8.99, TRUE, 0),  
+(4036, 'Caprese Salad', 'Tomato, mozzarella, and balsamic', 'Appetizer', 7.99, TRUE, 0),  
+(4037, 'Garlic Bread', 'Toasted garlic bread with butter', 'Appetizer', 5.49, TRUE, 0),  
+(4038, 'Crab Cakes', 'Two lump crab cakes with aioli', 'Appetizer', 12.49, TRUE, 0),  
+(4039, 'Nachos Supreme', 'Loaded nachos with cheese and jalapeños', 'Appetizer', 11.99, TRUE, 0),  
+(4040, 'French Onion Soup', 'Caramelized onions in broth', 'Appetizer', 6.99, TRUE, 0),  
 
 (4041, 'Margarita', 'Classic lime margarita', 'Drink', 9.99, TRUE, 3),  
 (4042, 'Old Fashioned', 'Whiskey, bitters, and orange', 'Drink', 10.99, TRUE, 3),  
@@ -73,53 +85,6 @@ VALUES
 (4047, 'Iced Tea', 'House-brewed sweet or unsweet tea', 'Drink', 3.99, TRUE, 3),  
 (4048, 'Cappuccino', 'Espresso with steamed milk', 'Drink', 5.99, TRUE, 3),  
 (4049, 'Red Wine', 'Cabernet Sauvignon', 'Drink', 12.99, TRUE, 3);
-
-INSERT INTO restaurant_reservation.orders(OrderID, TableID, Restaurant, TotalPrice)
-VALUES
-(1, 12, 1, 50.45),
-(2, 13, 1, 96.45),
-(3, 14, 1, 91.95),
-(4, 15, 1, 68.45),
-(5, 16, 1, 83.95),
-(6, 17, 1, 76.95),
-(7, 18, 1, 30.47),
-(8, 22, 2, 141.43),
-(9, 37, 3, 93.92);
-
-INSERT INTO restaurant_reservation.payment(TransactionID, LocationID, ReserveID, Amount, Payment_Status)
-VALUES
-(1, 1, 1, 50.45, "SUCCESS"),
-(2, 1, 2, 96.45, "SUCCESS"),
-(3, 1, 3, 91.95, "SUCCESS"),
-(4, 1, 4, 68.45, "SUCCESS"),
-(5, 1, 5, 83.95, "SUCCESS"),
-(6, 1, 6, 76.95, "SUCCESS"),
-(7, 1, 7, 30.47, "SUCCESS"),
-(8, 2, 8, 141.43, "SUCCESS"),
-(9, 3, 9, 93.92, "SUCCESS");
-
-INSERT INTO restaurant_reservation.promotions(PromotionID, Title, Promo_Description, Start_Date, End_Date, Discount_Amount, Is_Active)
-VALUES
-(1, "Summer Feast Deal", "20% off all dinner entrees", "20240601", "20240831", 0.20, TRUE),  
-(2, "Weekend Breakfast Special", "Free coffee with any breakfast meal", "20240501", "20241231", 5.00, TRUE),  
-(3, "Happy Hour", "15% off all drinks from 4-7 PM", "20240115", "20241215", 0.15, TRUE),  
-(4, "Valentine's Day Special", "All entrees 25% off", "20240210", "20240215", 0.25, FALSE),  
-(5, "Free Birthday Dessert", "Free dessert for birthday guests", "20240101", "20241231", 1.00, TRUE),  
-(6, "Family Night Discount", "25% off for families", "20240615", "20240915", 0.25, TRUE),  
-(7, "Student Discount", "10% off with valid student ID", "20240101", "20241231", 0.10, TRUE),  
-(8, "Thanksgiving Discount", "30% off all menu items", "20241120", "20241128", 0.30, FALSE);  
-
-INSERT INTO restaurant_reservation.reservations(ReservationID, Customer, Reservation_Date, Reservation_Time, Location, Table_ID, Party_Size)
-VALUES
-(1, 1, "20250201", "1730", 1, 12, 4),
-(2, 2, "20250201", "1800", 1, 13, 3),
-(3, 3, "20250201", "1900", 1, 14, 4),
-(4, 4, "20250202", "1700", 1, 15, 2),
-(5, 5, "20250202", "1830", 1, 16, 2),
-(6, 6, "20250202", "2000", 1, 17, 4),
-(7, 7, "20250203", "1730", 1, 18, 4),
-(8, 8, "20250203", "1830", 2, 22, 4),
-(9, 9, "20250203", "1900", 3, 37, 4);
 
 INSERT INTO restaurant_reservation.restaurants(RestaurantID, Location, Contact)
 VALUES
@@ -144,11 +109,23 @@ VALUES
 (19, "Kingston", "6138762234"),
 (20, "Burlington", "4165392986");
 
-INSERT INTO restaurant_reservation.restaurants(RestaurantID, Location, Contact)
+INSERT INTO restaurant_reservation.workers(WorkerID, FirstName, LastName, Title, Current_Location, PhoneNumber, Email)
 VALUES
-(1, "Toronto", "4161234567"),
-(2, "Mississauga", "4160987665"),
-(3, "Brampton", "4164538821");
+(1001, "James", "Cooper", "Manager", 1, "6475678901", "jcooper@gmail.com"),
+(1002, "Alex", "Carter", "Chef", 1, "4161234567", "acarter@gmail.com"),
+(1003, "Olivia", "Bennett", "Waitress", 1, "6472345678", "obennett@hotmail.com"),
+(1004, "Ethan", "Ramirez", "Waiter", 1, "4373456789", "eramirez@yahoo.com"),
+(1005, "Sophia", "Mitchell", "Hostess", 1, "4164567890", "smitchell@outlook.com"),
+(1006, "Mia", "Flores", "Manager", 2, "4376789012", "mflores@hotmail.com"),
+(1007, "Benjamin", "Foster", "Chef", 2, "4167890123", "bfoster@yahoo.com"),
+(1008, "Isabella", "Reyes", "Waitress", 2, "6478901234", "ireyes@outlook.com"),
+(1009, "Daniel", "Parker", "Waiter", 2, "4379012345", "dparker@gmail.com"),
+(1010, "Emma", "Gonzales", "Hostess", 2, "4160123456", "egonzales@hotmail.com"),
+(1011, "Lucas", "Rivera", "Manager", 3, "6471236789", "lrivera@yahoo.com"),
+(1012, "Ava", "Sanders", "Chef", 3, "4372347890", "asanders@outlook.com"),
+(1013, "Noah", "Brooks", "Waiter", 3, "4163458901", "nbrooks@gmail.com"),
+(1014, "Lily", "Hernandez", "Waitress", 3, "6474569012", "lhernandez@hotmail.com"),
+(1015, "Jacob", "Torres", "Hostess", 3, "4375670123", "jtorres@yahoo.com");
 
 INSERT INTO restaurant_reservation.restaurant_tables(TableNumber, ResID, Num_Seats, Table_Status, Assigned_Waiter)
 VALUES
@@ -177,20 +154,39 @@ VALUES
 (37, 3, 4, "RESERVED", 1014),
 (38, 3, 4, "AVAILABLE", 1014);
 
-INSERT INTO restaurant_reservation.workers(WorkerID, FirstName, LastName, Title, Current_Location, PhoneNumber, Email)
+INSERT INTO restaurant_reservation.orders(OrderID, TableID, Restaurant, TotalPrice)
 VALUES
-(1001, "James", "Cooper", "Manager", 1, "6475678901", "jcooper@gmail.com"),
-(1002, "Alex", "Carter", "Chef", 1, "4161234567", "acarter@gmail.com"),
-(1003, "Olivia", "Bennett", "Waitress", 1, "6472345678", "obennett@hotmail.com"),
-(1004, "Ethan", "Ramirez", "Waiter", 1, "4373456789", "eramirez@yahoo.com"),
-(1005, "Sophia", "Mitchell", "Hostess", 1, "4164567890", "smitchell@outlook.com"),
-(1006, "Mia", "Flores", "Manager", 2, "4376789012", "mflores@hotmail.com"),
-(1007, "Benjamin", "Foster", "Chef", 2, "4167890123", "bfoster@yahoo.com"),
-(1008, "Isabella", "Reyes", "Waitress", 2, "6478901234", "ireyes@outlook.com"),
-(1009, "Daniel", "Parker", "Waiter", 2, "4379012345", "dparker@gmail.com"),
-(1010, "Emma", "Gonzales", "Hostess", 2, "4160123456", "egonzales@hotmail.com"),
-(1011, "Lucas", "Rivera", "Manager", 3, "6471236789", "lrivera@yahoo.com"),
-(1012, "Ava", "Sanders", "Chef", 3, "4372347890", "asanders@outlook.com"),
-(1013, "Noah", "Brooks", "Waiter", 3, "4163458901", "nbrooks@gmail.com"),
-(1014, "Lily", "Hernandez", "Waitress", 3, "6474569012", "lhernandez@hotmail.com"),
-(1015, "Jacob", "Torres", "Hostess", 3, "4375670123", "jtorres@yahoo.com");
+(1, 12, 1, 50.45),
+(2, 13, 1, 96.45),
+(3, 14, 1, 91.95),
+(4, 15, 1, 68.45),
+(5, 16, 1, 83.95),
+(6, 17, 1, 76.95),
+(7, 18, 1, 30.47),
+(8, 22, 2, 141.43),
+(9, 37, 3, 93.92);
+
+INSERT INTO restaurant_reservation.reservations(ReservationID, Customer, Reservation_Date, Reservation_Time, Location, Table_ID, Party_Size)
+VALUES
+(1, 1, "20250201", "1730", 1, 12, 4),
+(2, 2, "20250201", "1800", 1, 13, 3),
+(3, 3, "20250201", "1900", 1, 14, 4),
+(4, 4, "20250202", "1700", 1, 15, 2),
+(5, 5, "20250202", "1830", 1, 16, 2),
+(6, 6, "20250202", "2000", 1, 17, 4),
+(7, 7, "20250203", "1730", 1, 18, 4),
+(8, 8, "20250203", "1830", 2, 22, 4),
+(9, 9, "20250203", "1900", 3, 37, 4);
+
+INSERT INTO restaurant_reservation.payment(TransactionID, LocationID, Reservation, Amount, Payment_Status)
+VALUES
+(1, 1, 1, 50.45, "SUCCESS"),
+(2, 1, 2, 96.45, "SUCCESS"),
+(3, 1, 3, 91.95, "SUCCESS"),
+(4, 1, 4, 68.45, "SUCCESS"),
+(5, 1, 5, 83.95, "SUCCESS"),
+(6, 1, 6, 76.95, "SUCCESS"),
+(7, 1, 7, 30.47, "SUCCESS"),
+(8, 2, 8, 141.43, "SUCCESS"),
+(9, 3, 9, 93.92, "SUCCESS");
+
