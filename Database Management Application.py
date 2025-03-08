@@ -2,8 +2,8 @@ import mysql.connector
 
 mydb = mysql.connector.connect(
     host="localhost",
-    user="****",
-    password="****",
+    user="root",
+    password="Winterhawks1",
     database="restaurant_reservation"
 )
 
@@ -83,27 +83,48 @@ def insert_data():
     return values, columns, table_name
 
 def execute_query():
-    query = str(input("ENTER QUERY: "))
+    #List of advanced queries to choose from
+    print("WHICH QUERY WOULD YOU LIKE TO RUN: ")
+    print(" 1: Find Total Revenue and Average Order Prices for Each Restaurant Location")
+    print(" 2: Find Employees Who Haven't Served a Table")
+    print(" 3: Find The Most Popular Reservation Time")
+    print(" 4: Find Customers Who Have Spent More Than The Average Spent By All Customers")
+    print(" 5: List the Reservations That Were Made By Customers Who Have the Same Last Name")
+    print(" 6: Find Employees and Their Assigned Restaurant Hierarchy")
+    print(" 7: Find the Top 3 Most Reserved and Least Reserved Tables")
+    print(" 8: ENTER CUSTOM QUERY")
+    print('\n')
+
+    selection = int(input("SELECT QUERY: "))
+
+    
+    if(selection == 1): query = "SELECT Location, SUM(orders.TotalPrice) AS TotalRevenue, AVG(orders.TotalPrice) AS AvgOrderPrice FROM orders JOIN restaurants ON Restaurant = RestaurantID GROUP BY Location ORDER BY TotalRevenue DESC;"
+    elif(selection == 2): query = "SELECT WorkerID, FirstName, LastName FROM restaurant_reservation.workers EXCEPT SELECT DISTINCT workers.WorkerID, workers.FirstName, workers.LastName FROM restaurant_reservation.workers JOIN restaurant_reservation.restaurant_tables ON workers.WorkerID = restaurant_tables.Assigned_Waiter;"
+    elif(selection == 3): query = "SELECT Reservation_Time, COUNT(*) AS ReservationCount, PERCENT_RANK() OVER (ORDER BY COUNT(*) DESC) AS PopularityRank FROM restaurant_reservation.reservations GROUP BY Reservation_Time ORDER BY ReservationCount DESC;"
+    elif(selection == 4): query = "SELECT customers.FirstName, customers.LastName, SUM(payment.Amount) AS TotalSpent FROM restaurant_reservation.customers JOIN restaurant_reservation.reservations ON customers.CustomerID = reservations.Customer JOIN restaurant_reservation.payment ON reservations.ReservationID = payment.ReserveID GROUP BY customers.CustomerID, customers.FirstName, customers.LastName HAVING TotalSpent > (SELECT AVG(Amount) FROM restaurant_reservation.payment);"
+    elif(selection == 5): query = "SELECT reservations.ReservationID, customers.FirstName, customers.LastName, reservations.Reservation_Date, reservations.Reservation_Time FROM restaurant_reservation.reservations JOIN restaurant_reservation.customers ON reservations.Customer = customers.CustomerID JOIN restaurant_reservation.customers c2 ON customers.LastName = c2.LastName AND customers.CustomerID <> c2.CustomerID ORDER BY customers.LastName, reservations.Reservation_Date;"
+    elif(selection == 6): query = "WITH RECURSIVE EmployeeHierarchy AS (SELECT workers.WorkerID, workers.FirstName, workers.LastName, workers.Title, restaurants.Location AS Restaurant, 1 AS Level FROM restaurant_reservation.workers JOIN restaurant_reservation.restaurants ON workers.Current_Location = restaurants.RestaurantID UNION ALL SELECT workers.WorkerID, workers.FirstName, workers.LastName, workers.Title, restaurants.Location, EmployeeHierarchy.Level + 1 FROM restaurant_reservation.workers JOIN EmployeeHierarchy ON workers.Current_Location = EmployeeHierarchy.WorkerID JOIN restaurant_reservation.restaurants ON workers.Current_Location = restaurants.RestaurantID) SELECT * FROM EmployeeHierarchy;"
+    elif(selection == 7): query = "WITH TableReservations AS (SELECT Table_ID, COUNT(*) AS ReservationCount FROM restaurant_reservation.reservations GROUP BY Table_ID), RankedTables AS (SELECT Table_ID, ReservationCount, RANK() OVER (ORDER BY ReservationCount DESC) AS MostReservedRank, RANK() OVER (ORDER BY ReservationCount ASC) AS LeastReservedRank FROM TableReservations) SELECT Table_ID, ReservationCount, 'Most Reserved' AS Category FROM RankedTables WHERE MostReservedRank <= 3 UNION ALL SELECT Table_ID, ReservationCount, 'Least Reserved' AS Category FROM RankedTables WHERE LeastReservedRank <= 3;"
+    if(selection == 8): query = str(input("ENTER QUERY: "))
+    
     print('\n')
 
     try: mycursor.execute(query)
-    except: print("FAILED TO EXECUTE QUERY")
+    except: print("FAILED TO EXECUTE QUERY")    
 
-    if query.strip().upper().startswith("SELECT"):
-        results = mycursor.fetchall()
-        columns = [desc[0] for desc in mycursor.description]
-        print("QUERY RESULTS: ")
-        print(" | ".join(columns))
-        print("-" * (len(" | ".join(columns)) + 5))
+    #constructs a table to display query results
+    results = mycursor.fetchall()
+    columns = [desc[0] for desc in mycursor.description]
+    print("QUERY RESULTS: ")
+    print(" | ".join(columns))
+    print("-" * (len(" | ".join(columns)) + 5))
 
-        for row in results:
-            print(" | ".join(str(item) for item in row))
+    for row in results:
+        print(" | ".join(str(item) for item in row))
 
-        print('\n')
-
-    else:
-        mydb.commit()
-        print("QUERY EXECUTED SUCCESSFULLY")
+    print('\n')
+    mydb.commit()
+    print("QUERY EXECUTED SUCCESSFULLY")
 
     return
 
@@ -133,19 +154,6 @@ if command in range(1,5): #if choice is valid
             print('\n')
 
         elif(command == 3): #if POPULATE is chosen
-            """table_name = str(input("WHICH TABLE WOULD YOU LIKE TO POPULATE: "))
-            print('\n')
-
-            #gets list of columns from table
-            mycursor.execute(f"SHOW COLUMNS FROM {table_name}")
-            columns = [col[0] for col in mycursor.fetchall()]
-
-            values = []
-            for col in columns:
-                #takes input for value to add to each column
-                value = input(f"ENTER VALUE FOR {col}: ")
-                values.append(value)"""
-            
             values, columns, table_name = insert_data()
 
             if(len(values) == len(columns)): #number of data entries must match number of columns
@@ -161,19 +169,7 @@ if command in range(1,5): #if choice is valid
             print('\n')
 
         elif(command == 4):
-            """query = str(input("ENTER QUERY: "))
-            print('\n')
-
-            try: mycursor.execute(query)
-
-            except: print("FAILED TO EXECUTE QUERY")"""
             execute_query()
 
 
         command = get_input()
-
-        
-
-
-
-#mycursor.execute(command)
