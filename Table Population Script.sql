@@ -127,66 +127,66 @@ VALUES
 (1014, "Lily", "Hernandez", "Waitress", 3, "6474569012", "lhernandez@hotmail.com"),
 (1015, "Jacob", "Torres", "Hostess", 3, "4375670123", "jtorres@yahoo.com");
 
-INSERT INTO restaurant_reservation.restaurant_tables(TableNumber, ResID, Num_Seats, Table_Status, Assigned_Waiter)
+INSERT INTO restaurant_reservation.restaurant_tables(TableNumber, Num_Seats, Table_Status, Assigned_Waiter)
 VALUES
-(11, 1, 4, "AVAILABLE", 1003),
-(12, 1, 4, "RESERVED", 1003),
-(13, 1, 4, "RESERVED", 1003),
-(14, 1, 4, "RESERVED", 1003),
-(15, 1, 2, "RESERVED", 1004),
-(16, 1, 2, "RESERVED", 1004),
-(17, 1, 4, "RESERVED", 1004),
-(18, 1, 4, "RESERVED", 1004),
-(21, 2, 4, "AVAILABLE", 1008),
-(22, 2, 4, "UNAVAILABLE", 1008),
-(23, 2, 4, "AVAILABLE", 1008),
-(24, 2, 4, "UNAVAILABLE", 1008),
-(25, 2, 2, "AVAILABLE", 1009),
-(26, 2, 2, "UNAVAILABLE", 1009),
-(27, 2, 4, "UNAVAILABLE", 1009),
-(28, 2, 4, "UNAVAILABLE", 1009),
-(31, 3, 4, "UNAVAILABLE", 1013),
-(32, 3, 4, "AVAILABLE", 1013),
-(33, 3, 4, "AVAILABLE", 1013),
-(34, 3, 4, "UNAVAILABLE", 1013),
-(35, 3, 2, "AVAILABLE", 1014),
-(36, 3, 2, "AVAILABLE", 1014),
-(37, 3, 4, "RESERVED", 1014),
-(38, 3, 4, "AVAILABLE", 1014);
+(11, 1, "AVAILABLE", 1003),
+(12, 1, "RESERVED", 1003),
+(13, 1, "RESERVED", 1003),
+(14, 1, "RESERVED", 1003),
+(15, 1, "RESERVED", 1004),
+(16, 1, "RESERVED", 1004),
+(17, 1, "RESERVED", 1004),
+(18, 1, "RESERVED", 1004),
+(21, 2, "AVAILABLE", 1008),
+(22, 2, "UNAVAILABLE", 1008),
+(23, 2, "AVAILABLE", 1008),
+(24, 2, "UNAVAILABLE", 1008),
+(25, 2, "AVAILABLE", 1009),
+(26, 2, "UNAVAILABLE", 1009),
+(27, 2, "UNAVAILABLE", 1009),
+(28, 2, "UNAVAILABLE", 1009),
+(31, 3, "UNAVAILABLE", 1013),
+(32, 3, "AVAILABLE", 1013),
+(33, 3, "AVAILABLE", 1013),
+(34, 3, "UNAVAILABLE", 1013),
+(35, 3, "AVAILABLE", 1014),
+(36, 3, "AVAILABLE", 1014),
+(37, 3, "RESERVED", 1014),
+(38, 3, "AVAILABLE", 1014);
 
-INSERT INTO restaurant_reservation.orders(OrderID, TableID, Restaurant, TotalPrice)
+INSERT INTO restaurant_reservation.orders(OrderID, TableID, TotalPrice)
 VALUES
-(1, 12, 1, 50.45),
-(2, 13, 1, 96.45),
-(3, 14, 1, 91.95),
-(4, 15, 1, 68.45),
-(5, 16, 1, 83.95),
-(6, 17, 1, 76.95),
-(7, 18, 1, 30.47),
-(8, 22, 2, 141.43),
-(9, 37, 3, 93.92);
+(1, 12, 50.45),
+(2, 13, 96.45),
+(3, 14, 91.95),
+(4, 15, 68.45),
+(5, 16, 83.95),
+(6, 17, 76.95),
+(7, 18, 30.47),
+(8, 22, 141.43),
+(9, 37, 93.92);
 
-INSERT INTO restaurant_reservation.reservations(ReservationID, Customer, Reservation_Date, Reservation_Time, Location, Table_ID, Party_Size)
+INSERT INTO restaurant_reservation.reservations(ReservationID, Customer, Reservation_Date, Reservation_Time, Table_ID, Party_Size)
 VALUES
-(1, 1, "20250201", "1730", 1, 12, 4),
-(2, 2, "20250201", "1800", 1, 13, 3),
-(3, 3, "20250201", "1900", 1, 14, 4),
-(4, 4, "20250202", "1700", 1, 15, 2),
-(5, 5, "20250202", "1830", 1, 16, 2),
-(6, 6, "20250202", "2000", 1, 17, 4),
-(7, 7, "20250203", "1730", 1, 18, 4),
-(8, 8, "20250203", "1830", 2, 22, 4),
-(9, 9, "20250203", "1900", 3, 37, 4);
+(1, 1, "20250201", "1730", 12, 4),
+(2, 2, "20250201", "1800", 13, 3),
+(3, 3, "20250201", "1900", 14, 4),
+(4, 4, "20250202", "1700", 15, 2),
+(5, 5, "20250202", "1830", 16, 2),
+(6, 6, "20250202", "2000", 17, 4),
+(7, 7, "20250203", "1730", 18, 4),
+(8, 8, "20250203", "1830", 22, 4),
+(9, 9, "20250203", "1900", 37, 4);
 
-INSERT INTO restaurant_reservation.payment(TransactionID, LocationID, Reservation, Amount, Payment_Status)
+INSERT INTO restaurant_reservation.payment(TransactionID, Reservation, Amount, Payment_Status)
 VALUES
-(1, 1, 1, 50.45, "SUCCESS"),
-(2, 1, 2, 96.45, "SUCCESS"),
-(3, 1, 3, 91.95, "SUCCESS"),
-(4, 1, 4, 68.45, "SUCCESS"),
-(5, 1, 5, 83.95, "SUCCESS"),
-(6, 1, 6, 76.95, "SUCCESS"),
-(7, 1, 7, 30.47, "SUCCESS"),
-(8, 2, 8, 141.43, "SUCCESS"),
-(9, 3, 9, 93.92, "SUCCESS");
+(1, 1, 50.45, "SUCCESS"),
+(2, 2, 96.45, "SUCCESS"),
+(3, 3, 91.95, "SUCCESS"),
+(4, 4, 68.45, "SUCCESS"),
+(5, 5, 83.95, "SUCCESS"),
+(6, 6, 76.95, "SUCCESS"),
+(7, 7, 30.47, "SUCCESS"),
+(8, 8, 141.43, "SUCCESS"),
+(9, 9, 93.92, "SUCCESS");
 
