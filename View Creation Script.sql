@@ -16,7 +16,7 @@ CREATE VIEW `view_orders` AS
 
 CREATE VIEW `view_payments` AS
   SELECT *
-  FROM `payments`;
+  FROM `payment`;
 
 CREATE VIEW `view_promotions` AS
   SELECT *
