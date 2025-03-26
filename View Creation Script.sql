@@ -30,7 +30,7 @@ CREATE VIEW `view_tables` AS
   SELECT *
   FROM `restaurant_tables`;
 
-CREATE TABLE `view_workers` AS
+CREATE VIEW `view_workers` AS
   SELECT *
   FROM `workers`;
 
